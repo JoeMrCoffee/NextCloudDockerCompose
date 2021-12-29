@@ -37,7 +37,8 @@ Then run this in the MariaDB server:
  
  ## Note for SELinux
  On SELinux-enabled systems using the volume mount from the docker-compose.yml file will cuase an error. For SELinux systems a :z flag is needed. Example below:
+ 
    volumes:
-        - <localfilefolder>:/var/lib/mysql:z
+     - <localfilefolder>:/var/lib/mysql:z
   
 I hope this can be helpful for anyone looking to get started using NextCloud in Docker / Podman environments. 
