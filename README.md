@@ -21,24 +21,25 @@ With Maria DB a potential issue can be the default compression setting causeing 
 
 Steps:
 
-  sudo docker exec -it nxtclouddb bash
+&ensp;&ensp;sudo docker exec -it nxtclouddb bash
 
 Then enter the MySQL instance (MariaDB still uses MySQL commands)
 
-  mysql -u root -p
+&ensp;&ensp;mysql -u root -p
 
 Enter the MySQL root password set in the docker-compose file.
 
 Then run this in the MariaDB server:
 
-  SET GLOBAL innodb_read_only_compressed=OFF;
+&ensp;&ensp;SET GLOBAL innodb_read_only_compressed=OFF;
   
- I have some more steps in my blog at https://opensourcetechtrn.blogspot.com/2021/07/nextcloud-in-docker.html
+I have some more steps in my blog at https://opensourcetechtrn.blogspot.com/2021/07/nextcloud-in-docker.html
  
- ## Note for SELinux
- On SELinux-enabled systems using the volume mount from the docker-compose.yml file will cuase an error. For SELinux systems a :z flag is needed. Example below:
- 
-   volumes:
-     - <localfilefolder>:/var/lib/mysql:z
+## Note for SELinux
+On SELinux-enabled systems using the volume mount from the docker-compose.yml file will cuase an error. For SELinux systems a :z flag is needed. Example below:
+
+&ensp;&ensp;volumes:
+
+&ensp;&ensp;&ensp;&ensp;- localdir: /var/lib/mysql:z
   
 I hope this can be helpful for anyone looking to get started using NextCloud in Docker / Podman environments. 
