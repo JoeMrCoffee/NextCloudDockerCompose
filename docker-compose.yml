@@ -5,7 +5,7 @@ services:
     image: mariadb:10.5
     restart: unless-stopped
     container_name: nxtclouddb
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW --innodb-read-only-compressed=OFF
     volumes:
       - <localfilefolder>:/var/lib/mysql
     environment:
