@@ -34,6 +34,10 @@ Then run this in the MariaDB server:
 &ensp;&ensp;SET GLOBAL innodb_read_only_compressed=OFF;
   
 I have some more steps in my blog at https://opensourcetechtrn.blogspot.com/2021/07/nextcloud-in-docker.html
+
+#### NOTE: 
+
+I am no longer seeing this issue occur with MariaDB 10.5 and the latest versions of the NextCloud docker instance.
  
 ## Note for SELinux
 On SELinux-enabled systems using the volume mount from the docker-compose.yml file will cuase an error. For SELinux systems a :z flag is needed. Example below:
