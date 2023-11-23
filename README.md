@@ -11,6 +11,8 @@ Some changes vs the NextCloud Docker Compose are:
 ## NEW Options - 11/23
 I created a few new options for the Docker Compose files - one with Redis which helps improve performance, and another file which will create and apply a self-signed SSL certificate for the Nextcloud container. The docker-compose-ssl.yml file requires that the additional Dockerfile be present in the same directory of the docker-compose-ssl.yml file on start up. The other 2 docker-compose files do NOT require the Dockerfile. 
 
+One note is to be careful with the port numbers used in the configs. These can be mapped as preferred. 
+
 ## Getting started:
 This file should be first modified with the desired local folder/directory under the volumes sections. The database password can also be modified to the desired password.
 
