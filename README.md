@@ -16,9 +16,9 @@ One note is to be careful with the port numbers used in the configs. These can b
 ## Getting started:
 This file should be first modified with the desired local folder/directory under the volumes sections. The database password can also be modified to the desired password.
 
-Once the docker-compose.yml file is configured as desired a simple 'docker-compose up -d' shoudl start the 2 containers, including downloading the images and other necessary files. 
+Once the docker-compose.yml file is configured as desired a simple 'docker-compose up -d' should start the 2 containers, including downloading the images and other necessary files. 
 
-Once both containers are active you should be able to navigate to the server IP port 8080 and complete setup. 
+Once both containers are active you should be able to navigate to the server IP port 8080/8443 (or whatever port that was given) and complete setup. 
 
 ## Troubleshooting:
 With Maria DB a potential issue can be the default compression setting causeing an error with NextCloud. Should this occur there is a fairly simple work around that can be performed by logging into the MariaDB container and adjusting. 
