@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:10.5
+    restart: unless-stopped
+    container_name: nxtclouddb_redis
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    volumes:
+      - ./datadb-redis:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=my5QLn3xtCl0ud
+      - MYSQL_PASSWORD=my5QLnextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    image: nextcloud
+    container_name: nxtcloud-redis
+    restart: unless-stopped
+    ports:
+      - 9037:80
+    links:
+      - db
+      - redis
+    volumes:
+      - ./data-redis:/var/www/html
+    environment:
+      - MYSQL_PASSWORD=my5QLnextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_HOST_PASSWORD=redispassword
+
+  redis:
+    image: redis:alpine
+    container_name: nc-redis
+    restart: unless-stopped
+    command: redis-server --requirepass redispassword

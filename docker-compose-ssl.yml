@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:10.5
+    restart: unless-stopped
+    container_name: SSLnxtclouddb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    volumes:
+      - ./SSLdatadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=my5QLn3xtCl0ud
+      - MYSQL_PASSWORD=my5QLnextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    build: ./
+    container_name: SSLnxtcloud
+    restart: unless-stopped
+    ports:
+      - 8443:443
+    links:
+      - db
+    volumes:
+      - ./SSLdata:/var/www/html
+    environment:
+      - MYSQL_PASSWORD=my5QLnextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db
